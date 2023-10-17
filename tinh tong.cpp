@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<math.h>
 void Nhap(int a[], int n)
 {
     for(int i=0; i<n ; i++)
@@ -36,31 +37,124 @@ void lon(int a[],int n)
     };
     printf("\nPhan tu lon nhat trong mang la %d", MAX);
 }
-
-void nt(int a[],int n)
+bool KiemTraNguyenTo(int n)
 {
-	int e = 0;
-	int s = 0;
-	for (int i=0; i < n; i++)	
-	{
-		
-		int j = a[i] % 2;
-		for(int z = 2; z< j ; z++ ) 
-		{
-			if(a[i]%z == 0)
-				{
-				break;
-				} 					
-				e++;
-				s = s+ a[i];
-			}
-		}
-	
-	}
-	printf("\n ma no bang %d,%d", e, s);
+    if (n < 2)
+    {
+        return false;
+    }
+    else if (n > 2)
+    {
+        if (n % 2 == 0) 
+        {
+            return false;
+        }
+        for (int i = 3; i <= sqrt((float)n); i += 2) 
+        {
+            if (n % i == 0)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+    
 }
-int main()
+int demnguyento(int a[], int n)
 {
+    int dem = 0;
+    int tong = 0;
+    for(int i = 0; i < n; i++)
+    {
+        if(KiemTraNguyenTo(a[i]) == true && a[i] < 100)
+        {
+            dem++;
+            tong = tong + a[i];
+        }
+    }
+	printf("\nso nguyen to %d \ntong cac so nguyen to %d" ,dem, tong);
+	return dem;
+}
+void timvitri(int a[], int n)
+{
+	int x;
+	printf("\nnhap gia tri can tim: ");
+	scanf("%d",&x);
+	int c = 0;
+	for (int i = 0 ; i < n ; i++ ){
+		if (a[i] == x)
+		{
+			printf(" \nvi tri cac so bang gia tri: %d",i);
+			c++;
+		} else if(i == n-1 && c==0 )
+		 	{
+			printf("\ndeo co");
+		 	};
+	}
+}
+
+
+
+void sapxep(int a[], int n)
+{
+	for (int i = 1 ; i < n ; i++ ){
+			for (int j = 0 ; j < n ; j++ ){
+		
+		if (a[j] > a[i] ){
+			int t = a[i];
+			a[i] = a[j];
+			a[j] = t;
+			
+		}
+	}
+}
+printf("\nmang duoc xap xep: ");
+Xuat(a,n);
+}
+
+
+
+
+void themphantu(int a[], int n)
+{
+	int z,PhanTu;
+	printf("\nthem phan tu vao mang: ");
+	scanf("%d", &PhanTu);
+	for(int i = n; i > z; i--){
+        a[i] = a[i-1];
+    }
+    a[z] = PhanTu;
+    n++;
+    sapxep(a,n);
+
+}
+
+
+ void xoaphantu(int a[], int n){
+ 	int x;
+ 	printf("\nxoa phan tu trong mang: ");
+	scanf("%d", &x);
+	
+    for(int i=0;i<n;i++){
+		 	if(a[i]==x)
+			   {
+			     for(;i<n;i++)
+				 a[i]=a[i+1];
+			     n--;     
+			   }
+	}
+	Xuat(a,n);
+}
+ 	
+
+ 
+
+
+
+
+
+int main()
+{         
     int a[100];
     int n;
     do{
@@ -76,5 +170,11 @@ int main()
     Xuat(a,n);
     Sum(a,n);
     lon(a,n);
-    nt(a,n);
+    demnguyento(a,n);
+	timvitri(a,n);
+	sapxep(a,n);
+	themphantu(a,n);
+	xoaphantu(a,n);
+	
+    
 }
