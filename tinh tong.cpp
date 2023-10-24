@@ -37,28 +37,51 @@ void lon(int a[],int n)
     printf("\nPhan tu lon nhat trong mang la %d", MAX);
 }
 
-void nt(int a[],int n)
-{
-	int e = 0;
-	int s = 0;
-	for (int i=0; i < n; i++)	
-	{
-		
-		int j = a[i] % 2;
-		for(int z = 2; z< j ; z++ ) 
-		{
-			if(a[i]%z == 0)
-				{
-				break;
-				} 					
-				e++;
-				s = s+ a[i];
-			}
+
+void timso(int a[],int n){
+	int x,t;
+	t=0;
+	printf("\nnhap so can tim");
+	scanf("%d",&x);
+	for(int i = 0; i<n; i++){
+		if(a[i]== x){
+			printf("\n vi tri: %d", i );
+			t++;
+		}else if(i == (n - 1)  && t == 0){
+			printf("deoconhe cu" );
 		}
-	
 	}
-	printf("\n ma no bang %d,%d", e, s);
+		
 }
+
+bool KTSNT(int x)
+{
+	if(x<2)
+		return false;
+	for(int i=2; i<=x/2; i++)
+		if(x%i==0)
+			return false;
+	return true;
+}
+int Tongsnt(int a[], int n)
+{
+	int tong=0;
+	int t = 0;
+	for(int i=0; i<n; i++)
+		if(KTSNT(a[i])==true){
+				tong = tong + a[i];
+				t ++;
+		}
+		
+		//return tong;
+	printf("\n co tat ca %d so nguyen to trong mang ",t,"\n tong so nguyen to %d", tong);
+		printf("\n tong so nguyen to %d", tong);
+}
+
+
+
+
+
 int main()
 {
     int a[100];
@@ -76,5 +99,6 @@ int main()
     Xuat(a,n);
     Sum(a,n);
     lon(a,n);
-    nt(a,n);
+    timso(a,n);
+    Tongsnt(a, n);
 }
