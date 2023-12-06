@@ -1,8 +1,10 @@
-#include<stdio.h>
+#
+include<stdio.h>
 #include<conio.h>
 #include<string.h>
 #include<stdlib.h>
 #include<math.h>
+/*  //CHUONG TRINH BAI 1
 int output(int a[50][50], int m, int n)
 {
     int i,j;
@@ -43,7 +45,7 @@ int NHAP(int a[50][50], int m, int n)
 
 	for(int i=0; i < m; i++){
 		for(int j=0; j<n ; j++){
-			printf("nhap phan tu A[%d][%d]", i+1,j+1);
+			printf("nhap phan tu A[%d][%d]: ", i+1,j+1);
 			scanf("%d",&a[i][j]);
 		}
 	} 
@@ -82,17 +84,18 @@ int intong(int a[50][50], int m, int n)
 int main()
 {
 int key,a[50][50],m,n;
-bool t = true;
+//bool t = true;
 
-do{
-
+while(true){
+system("cls");
 printf("****************************************************************\n");
 printf("*      1.NHAP MANG 2 CHIEU                                     *\n");
 printf("*      2.SAP XEP MANG THEO THU TU TANG DAN                     *\n");
 printf("*      3.TONG CAC PHAN TU LA SO NGUYEN TO CHIA HET CHO 3       *\n");
 printf("*      0.THOAT                                                 *\n");
 printf("****************************************************************\n");
-printf("\n AN PHIM CHON TUONG UNG: ");
+printf("\n \t\t AN PHIM CHON TUONG UNG: ");
+fflush(stdin);
 scanf("%d",&key);
 switch (key)
 
@@ -104,14 +107,15 @@ switch (key)
 		printf("nhap so cot: ");
 		scanf("%d",&n);
     	NHAP(a,m,n);
-    	fflush(stdin);
-    	system("cls");
-      break;
-      }
+    	printf("An phim bat ki de tiep tuc! ");
+  		getch();
+        break;
+        }
  
     case 2:{ 
-		
   		sapxep(m,n,a);
+  		printf("An phim bat ki de tiep tuc! ");
+  		getch();
     	break;
     	
     }
@@ -119,16 +123,20 @@ switch (key)
         
     case 3:
 		intong(a, m, n);
+		printf("An phim bat ki de tiep tuc! ");
+  		getch();
     	break;
     case 0:
-    	t = false;
+    	exit(1);
     	break;
-    default:
-      printf("khong co phim nay");
+    default:{
+    	  printf("khong co phim nay\n");
+      printf("An phim bat ki de tiep tuc! ");
+  	  getch();
+    }
+    
 }
-
-	
-}while(t);
-
-
 }
+}*/
+// CHUONG TRINH BAI 2
+
