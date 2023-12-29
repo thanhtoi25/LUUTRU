@@ -47,29 +47,33 @@ int main(){
 	printf("Nhap so can tinh tong: ");
 	scanf("%d",&t);
 	printf("tong cac so tu 1 den n la: %d ", tinhtong(t));
-}*/
+}*/ 
+
+int nhapmang(int a[100], int n, int i ){
+	if (i==n) return 0;
+	printf("nhap phan tu thu %d: ",i+1);
+	scanf("%d",&a[i]);
+	nhapmang(a,n,i+1);
+}
+int xuatmang(int a[100],int  n, int i){
+	if (i==n) return 0;
+	printf("%d  ",i,a[i]);
+	xuatmang(a,n,i+1);
+}
 
 int main(){
 	int a[100];
-	int n,i;
+	int n,i=0;
 	printf("nhap so luong phan tu ");
 	scanf("%d",&n);
 	nhapmang(a,n,i);
+	printf("\nnhap phim bat ki de tiep tuc!\n\n ");
 	getch();
+	printf("mang vua duoc nhap la:  ");
 	xuatmang(a,n,i);
 }
 
-int nhapmang(a[100], n, int i = 0){
-	if (i==n) return;
-	printf("nhap phan tu thu %d: ",i)
-	scanf("%d",&a[i]);
-	nhapmang(a,n,i++);
-}
-int xuatmang(a[100], n, int i= 0){
-	if (i==n) return;
-	printf("phan tu thu %d: %d",i,a[i]);
-	xuatmang(a,n,i++);
-}
+
 
 
 
